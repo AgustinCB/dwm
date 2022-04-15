@@ -67,6 +67,7 @@ static const char *termcmd[]  = { "bash", "-c", "kitty --listen-on unix:/tmp/myk
 static const char *suspendcmd[]  = { "sudo", "systemctl", "suspend", NULL };
 static const char *hibernatecmd[]  = { "sudo", "systemctl", "hybrid-sleep", NULL };
 static const char *scrotcmd[] = { "scrot", NULL };
+static const char *dashboardcmd[] = { "/home/agustin/.config/eww/dashboard/launch_dashboard", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -82,6 +83,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,	                XK_c,      spawn,     	   {.v = dashboardcmd} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
