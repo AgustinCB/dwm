@@ -8,7 +8,7 @@ static const unsigned int showbar   = 0;        /* 0 means no bar */
 static const unsigned int topbar    = 1;        /* 0 means bottom bar */
 static const unsigned int usealtbar = 0;
 static const char *altbarclass	    = "Eww";
-static const char *altbarcmd	    = "$HOME/.config/eww/start";
+static const char *altbarcmd	    = NULL;
 static const unsigned int gappx     = 15;
 static const char *fonts[]          = { "JetBrains Mono:size=10" };
 static const char dmenufont[]       = "JetBrains Mono:size=10";
@@ -68,13 +68,16 @@ static const char *suspendcmd[]  = { "sudo", "systemctl", "suspend", NULL };
 static const char *hibernatecmd[]  = { "sudo", "systemctl", "hybrid-sleep", NULL };
 static const char *scrotcmd[] = { "scrot", NULL };
 static const char *dashboardcmd[] = { "/home/agustin/.config/eww/dashboard/launch_dashboard", NULL };
+static const char *barcmd[] = { "/home/agustin/.config/eww/arin/launch_bar", NULL };
+static const char *startrecordingcmd[] = { "/home/agustin/.local/bin/start-recording", NULL };
+static const char *stoprecordingcmd[] = { "/home/agustin/.local/bin/stop-recording", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = scrotcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_b,      spawn,          {.v = barcmd} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -83,6 +86,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,	                XK_r,      spawn,     	   {.v = startrecordingcmd} },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = stoprecordingcmd} },
 	{ MODKEY,	                XK_c,      spawn,     	   {.v = dashboardcmd} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },

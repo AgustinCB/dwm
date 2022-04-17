@@ -1716,7 +1716,7 @@ spawn(const Arg *arg)
 void
 spawnbar()
 {
-	if (*altbarcmd)
+	if (altbarcmd != NULL)
 		system(altbarcmd);
 }
 
